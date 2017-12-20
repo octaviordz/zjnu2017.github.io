@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Demo of Image KeyInput Image Movement JavaScript</title>
+
+<!--
+Web Authoring and Design
+ZJNU 2017
+https://zjnu2017.github.io/WAD/
+
+Demonstrate:
+- Simple falling images
+- Movement
+
+-->
+
+<noscript>
+	Warning - JavaScript is Disabled.
+	
+	For full functionality of this page, it is necessary to enable JavaScript.
+</noscript>
+
+
+<script language='JavaScript' type='text/JavaScript'>
+
+var myTime  = null;
+
+function Timer() // update loop for game
+{
+	// Get current positions
+	for (var a=0; a<3; ++a)
+	{
+		var imgName = 'i' + (a+1); // i1, i2, i3, ..
+		var y =document.getElementById(imgName).offsetTop;
+		var x =document.getElementById(imgName).offsetLeft;
+		
+		// New positions
+		y = y + 2;
+		x = x;
+		
+		// if falls off bottom then reset/start
+		if ( y > 600 )  y = 0;
+		
+		// Store positions	
+		document.getElementById(imgName).style.top = y + "px"; // vertical movment
+		document.getElementById(imgName).style.left= x + "px"; // horizontal movment
+	}
+	
+	myTime=setTimeout('Timer()',10);
+}
+
+function Reset1()
+{
+	Timer();	
+}
+
+/*
+window.document.onload = function(e){ 
+    Reset1();
+}
+*/
+
+
+//-->
+</script>
+
+</head>
+<body onload="Reset1()">
+	<img src="./snow.gif" id='i1' style="position:absolute; left:  50; top: 100;">
+	<img src="./snow.gif" id='i2' style="position:absolute; left: 200; top: 100;">
+	<img src="./snow.gif" id='i3' style="position:absolute; left: 350; top: 100;">
+	
+	Falling snow flakea
+
+	<br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
